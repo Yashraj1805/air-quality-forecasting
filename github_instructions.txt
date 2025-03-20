@@ -1,0 +1,39 @@
+# GitHub and Railway Deployment Instructions
+
+## 1. Connect your local repository to GitHub
+
+After creating your repository on GitHub (https://github.com/new), run these commands:
+
+```
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git branch -M main
+git push -u origin main
+```
+
+Replace:
+- YOUR_USERNAME with your GitHub username
+- YOUR_REPO_NAME with your repository name (e.g., air-quality-forecasting)
+
+## 2. Deploy from GitHub to Railway
+
+After pushing your code to GitHub:
+
+1. Go to https://railway.app/ and sign in
+2. Click "New Project" 
+3. Select "Deploy from GitHub repo"
+4. Select your repository
+5. Railway will automatically detect your Procfile and deploy your app
+6. After deployment, you can find your API URL in the project settings
+
+## 3. Testing your API
+
+Once deployed, test your API with:
+
+```
+curl -X GET https://your-railway-app-url.railway.app/get
+```
+
+For predictions:
+```
+curl -X POST -H "Content-Type: application/json" -d '{"PM2.5": 35.0, "PM10": 70.0, "NO2": 80.0, "CO": 1.2, "SO2": 40.0, "O3": 50.0}' https://your-railway-app-url.railway.app/predict
+``` 
