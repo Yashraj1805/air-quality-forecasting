@@ -67,4 +67,14 @@ curl -X GET https://your-railway-app-url.railway.app/get
 For predictions:
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"PM2.5": 35.0, "PM10": 70.0, "NO2": 80.0, "CO": 1.2, "SO2": 40.0, "O3": 50.0}' https://your-railway-app-url.railway.app/predict
+```
+
+## CORS Configuration
+
+The API is now configured to accept requests from specific origins. If you want to restrict it to specific origins later, you can modify the CORS configuration like this:
+
+```python
+from flask_cors import CORS
+
+CORS(app, origins=['https://your-frontend-domain.com'])
 ``` 
